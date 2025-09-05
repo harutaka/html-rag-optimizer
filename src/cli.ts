@@ -1,8 +1,12 @@
 import { promises as fs } from "node:fs";
-import { resolve } from "node:path";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { Command } from "commander";
-import { optimizeHtml, optimizeHtmlDir, optimizeHtmlFile } from "./index";
+import { optimizeHtmlDir, optimizeHtmlFile } from "./index";
 import type { OptimizeOptions } from "./types";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 interface CliOptions {
   output?: string;
