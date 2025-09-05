@@ -135,10 +135,11 @@ function processElementWithParser(
         continue;
       }
 
-      // Remove script, style, meta tags (unless excluded)
+      // Remove script, style, meta tags (unless excluded or in keepTags)
       if (
         ["script", "style", "meta"].includes(tagName) &&
-        !opts.excludeTags.includes(tagName)
+        !opts.excludeTags.includes(tagName) &&
+        (opts.keepTags.length === 0 || !opts.keepTags.includes(tagName))
       ) {
         node.remove();
         continue;
