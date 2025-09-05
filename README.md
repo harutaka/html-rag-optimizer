@@ -15,7 +15,7 @@ A powerful HTML optimization tool designed specifically for RAG (Retrieval-Augme
 ## Installation
 
 ```bash
-npm install html-rag-optimizer
+npm install @harutakax/html-rag-optimizer
 ```
 
 ## Quick Start
@@ -23,7 +23,7 @@ npm install html-rag-optimizer
 ### Programmatic API
 
 ```typescript
-import { optimizeHtml } from 'html-rag-optimizer';
+import { optimizeHtml } from '@harutakax/html-rag-optimizer';
 
 const html = `
 <div class="container">
@@ -44,7 +44,7 @@ console.log(optimized);
 
 ```bash
 # Optimize a single file
-npx html-rag-optimizer input.html -o output.html
+npx @harutakax/html-rag-optimizer input.html -o output.html
 
 # Optimize an entire directory
 html-rag-optimizer --input-dir ./docs --output-dir ./optimized
@@ -70,7 +70,7 @@ html-rag-optimizer input.html -o output.html --keep-attributes --exclude-tags sc
 ### Custom Configuration
 
 ```typescript
-import { optimizeHtml } from 'html-rag-optimizer';
+import { optimizeHtml } from '@harutakax/html-rag-optimizer';
 
 const options = {
   keepAttributes: false,
@@ -88,7 +88,7 @@ const optimized = optimizeHtml(html, options);
 ### File Processing
 
 ```typescript
-import { optimizeHtmlFile, optimizeHtmlDir } from 'html-rag-optimizer';
+import { optimizeHtmlFile, optimizeHtmlDir } from '@harutakax/html-rag-optimizer';
 
 // Process single file
 await optimizeHtmlFile('input.html', 'output.html', options);
@@ -100,7 +100,7 @@ await optimizeHtmlDir('./docs', './optimized', options);
 ### Batch Processing with Custom Logic
 
 ```typescript
-import { optimizeHtml } from 'html-rag-optimizer';
+import { optimizeHtml } from '@harutakax/html-rag-optimizer';
 import { promises as fs } from 'fs';
 
 async function processBatch(files: string[]) {
