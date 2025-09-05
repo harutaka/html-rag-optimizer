@@ -145,7 +145,7 @@ describe("Full Integration Tests", () => {
     expect(result).not.toContain("<!--");
   });
 
-  it("should handle e-commerce product page HTML", () => {
+  it("should handle e-commerce product page HTML with excludeTags", () => {
     const productHtml = `
       <div class="product-page">
         <script type="application/ld+json">
@@ -157,10 +157,6 @@ describe("Full Integration Tests", () => {
         <div class="product-main">
           <div class="product-images">
             <img src="product.jpg" alt="Product Image" class="main-image">
-            <div class="thumbnails">
-              <img src="thumb1.jpg" alt="Thumbnail 1">
-              <img src="thumb2.jpg" alt="Thumbnail 2">
-            </div>
           </div>
           <div class="product-info">
             <h1 class="product-title">Sample Product</h1>
@@ -171,47 +167,22 @@ describe("Full Integration Tests", () => {
             <div class="description">
               <p>This is a sample product description.</p>
             </div>
-            <div class="add-to-cart">
-              <button type="button" class="btn btn-primary">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-        <div class="reviews">
-          <h2>Customer Reviews</h2>
-          <div class="review">
-            <div class="review-header">
-              <span class="reviewer-name">John D.</span>
-              <div class="rating">★★★★☆</div>
-            </div>
-            <p class="review-text">Great product, highly recommended!</p>
           </div>
         </div>
       </div>
     `;
 
     const result = optimizeHtml(productHtml, {
-      keepTags: ["div", "h1", "h2", "p", "span", "button", "script"],
+      excludeTags: ["script", "img"],
     });
 
-    // Should keep specified tags
-    expect(result).toContain("<div>");
-    expect(result).toContain("<h1>");
-    expect(result).toContain("<h2>");
-    expect(result).toContain("<p>");
-    expect(result).toContain("<span>");
-    expect(result).toContain("<button>");
-
-    // Should keep script from keepTags
-    expect(result).toContain("<script>");
-
-    // Should remove other tags
-    expect(result).not.toContain("<img>");
-    expect(result).not.toContain("<a>");
+    // Should preserve excluded tags
+    expect(result).toContain("<script");
+    expect(result).toContain("<img");
 
     // Should preserve content
     expect(result).toContain("Sample Product");
     expect(result).toContain("$99.99");
-    expect(result).toContain("Customer Reviews");
   });
 
   it("should handle multilingual content with special characters", () => {

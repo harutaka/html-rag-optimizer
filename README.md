@@ -61,7 +61,6 @@ npx @harutakax/html-rag-optimizer input.html -o output.html
 | `removeEmpty` | `boolean` | `true` | Remove empty elements |
 | `preserveWhitespace` | `boolean` | `false` | Preserve whitespace formatting |
 | `excludeTags` | `string[]` | `[]` | Tags to exclude from removal |
-| `keepTags` | `string[]` | `[]` | Only keep specified tags (removes others) |
 | `removeComments` | `boolean` | `true` | Remove HTML comments |
 | `minifyText` | `boolean` | `true` | Normalize and minify text content |
 
@@ -77,7 +76,6 @@ const options = {
   removeEmpty: true,
   preserveWhitespace: false,
   excludeTags: ['code', 'pre'], // Don't remove code blocks
-  keepTags: ['h1', 'h2', 'h3', 'p', 'div', 'article'], // Only keep these tags
   removeComments: true,
   minifyText: true
 };
@@ -108,7 +106,6 @@ async function processBatch(files: string[]) {
     files.map(async (file) => {
       const html = await fs.readFile(file, 'utf-8');
       return optimizeHtml(html, {
-        keepTags: ['h1', 'h2', 'h3', 'p', 'article'],
         removeComments: true
       });
     })
@@ -143,7 +140,6 @@ async function processBatch(files: string[]) {
 --output-dir <path>          Output directory
 --keep-attributes            Keep HTML attributes
 --exclude-tags <tags>        Exclude tags (comma-separated)
---keep-tags <tags>           Keep only specified tags (comma-separated)
 --preserve-whitespace        Preserve whitespace
 --config <path>              Configuration file path
 -h, --help                   Show help
@@ -159,7 +155,6 @@ Create a `html-rag-optimizer.json` file:
   "keepAttributes": false,
   "removeEmpty": true,
   "excludeTags": ["code", "pre"],
-  "keepTags": ["h1", "h2", "h3", "p", "div", "article"],
   "removeComments": true,
   "minifyText": true
 }
@@ -226,7 +221,6 @@ Perfect for preparing HTML content for vector databases and search systems:
 // Optimize content before indexing
 const webContent = await fetchWebPage(url);
 const optimizedForRAG = optimizeHtml(webContent, {
-  keepTags: ['h1', 'h2', 'h3', 'p', 'article', 'section'],
   removeComments: true,
   minifyText: true
 });
@@ -240,7 +234,6 @@ Clean up documentation before feeding to LLMs:
 const docs = await fs.readFile('documentation.html', 'utf-8');
 const cleanDocs = optimizeHtml(docs, {
   excludeTags: ['code', 'pre'], // Keep code examples
-  keepTags: ['h1', 'h2', 'h3', 'p', 'ul', 'ol', 'li', 'code', 'pre']
 });
 ```
 
@@ -250,7 +243,6 @@ Clean scraped content for analysis:
 ```typescript
 const scrapedHTML = await scrapeWebsite(url);
 const cleanContent = optimizeHtml(scrapedHTML, {
-  keepTags: ['p', 'h1', 'h2', 'h3', 'article'],
   removeComments: true,
   minifyText: true
 });

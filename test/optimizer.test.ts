@@ -70,12 +70,6 @@ describe("optimizeHtml - Options", () => {
     expect(optimizeHtml(input, { excludeTags: ["script"] })).toBe(expected);
   });
 
-  it("should keep only specified tags when keepTags is provided", () => {
-    const input = "<div>Content</div><p>Paragraph</p><span>Span</span>";
-    const expected = "<div>Content</div><p>Paragraph</p>";
-    expect(optimizeHtml(input, { keepTags: ["div", "p"] })).toBe(expected);
-  });
-
   it("should preserve comments when removeComments is false", () => {
     const input = "<div>Content</div><!-- Comment -->";
     const expected = "<div>Content</div><!-- Comment -->";

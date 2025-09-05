@@ -14,7 +14,6 @@ interface CliOptions {
   outputDir?: string;
   keepAttributes?: boolean;
   excludeTags?: string;
-  keepTags?: string;
   preserveWhitespace?: boolean;
   config?: string;
 }
@@ -42,7 +41,6 @@ export async function runCli(args: string[] = process.argv): Promise<void> {
       "--exclude-tags <tags>",
       "Exclude tags from removal (comma-separated)",
     )
-    .option("--keep-tags <tags>", "Keep only specified tags (comma-separated)")
     .option("--preserve-whitespace", "Preserve whitespace")
     .option("--config <path>", "Configuration file path")
     .action(async (input: string, options: CliOptions) => {
@@ -66,9 +64,6 @@ async function handleCliAction(
     keepAttributes: options.keepAttributes || false,
     excludeTags: options.excludeTags
       ? options.excludeTags.split(",").map((tag) => tag.trim())
-      : [],
-    keepTags: options.keepTags
-      ? options.keepTags.split(",").map((tag) => tag.trim())
       : [],
     preserveWhitespace: options.preserveWhitespace || false,
   };

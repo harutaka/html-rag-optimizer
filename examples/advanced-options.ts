@@ -72,14 +72,14 @@ console.log("Result:", excludeScriptResult);
 console.log("Contains script tag:", excludeScriptResult.includes("<script>"));
 console.log();
 
-// Example 4: Keep only specific tags
-console.log("4. Keep Only Essential Tags:");
-const keepTagsResult = optimizeHtml(sampleHtml, {
-  keepTags: ["article", "h1", "h2", "p", "ul", "li", "blockquote"],
+// Example 4: Exclude multiple tags
+console.log("4. Exclude Multiple Tags:");
+const excludeMultipleResult = optimizeHtml(sampleHtml, {
+  excludeTags: ["script", "pre", "code"],
 });
-console.log("Result:", keepTagsResult);
-console.log("Contains <time>:", keepTagsResult.includes("<time>"));
-console.log("Contains <span>:", keepTagsResult.includes("<span>"));
+console.log("Result:", excludeMultipleResult);
+console.log("Contains script:", excludeMultipleResult.includes("<script>"));
+console.log("Contains pre:", excludeMultipleResult.includes("<pre>"));
 console.log();
 
 // Example 5: Preserve whitespace
@@ -100,21 +100,6 @@ console.log("6. Complex Configuration:");
 const complexResult = optimizeHtml(sampleHtml, {
   keepAttributes: true,
   excludeTags: ["script", "pre", "code"],
-  keepTags: [
-    "article",
-    "header",
-    "h1",
-    "h2",
-    "p",
-    "ul",
-    "li",
-    "blockquote",
-    "script",
-    "pre",
-    "code",
-    "time",
-    "div",
-  ],
   removeComments: true,
   minifyText: true,
 });
