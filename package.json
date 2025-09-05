@@ -1,13 +1,60 @@
 {
   "name": "html-rag-optimizer",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "version": "0.1.0-alpha.1",
+  "description": "HTML optimization tool for RAG (Retrieval-Augmented Generation) systems",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
   },
-  "keywords": [],
+  "bin": {
+    "html-rag-optimizer": "./bin/cli.js"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "test:watch": "vitest --watch",
+    "type-check": "tsc --noEmit",
+    "lint": "biome check .",
+    "lint:fix": "biome check --apply .",
+    "ci": "pnpm lint && pnpm type-check && pnpm test && pnpm build"
+  },
+  "keywords": [
+    "html",
+    "rag",
+    "optimization",
+    "parser",
+    "text-extraction",
+    "typescript"
+  ],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.15.1"
+  "packageManager": "pnpm@10.15.1",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "node-html-parser": "^6.1.13"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
+    "@types/node": "^20.14.0",
+    "@vitest/coverage-v8": "^2.0.0",
+    "tsdown": "^0.14.2",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0"
+  }
 }
