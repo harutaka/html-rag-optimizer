@@ -47,10 +47,10 @@ console.log(optimized);
 npx @harutakax/html-rag-optimizer input.html -o output.html
 
 # Optimize an entire directory
-html-rag-optimizer --input-dir ./docs --output-dir ./optimized
+@harutakax/html-rag-optimizer --input-dir ./docs --output-dir ./optimized
 
 # With custom options
-html-rag-optimizer input.html -o output.html --keep-attributes --exclude-tags script,style
+@harutakax/html-rag-optimizer input.html -o output.html --keep-attributes --exclude-tags script,style
 ```
 
 ## Configuration Options
@@ -123,16 +123,16 @@ async function processBatch(files: string[]) {
 
 ```bash
 # Help
-html-rag-optimizer --help
+@harutakax/html-rag-optimizer --help
 
 # Version
-html-rag-optimizer --version
+@harutakax/html-rag-optimizer --version
 
 # Single file
-html-rag-optimizer input.html -o output.html
+@harutakax/html-rag-optimizer input.html -o output.html
 
 # Directory processing
-html-rag-optimizer --input-dir ./src --output-dir ./dist
+@harutakax/html-rag-optimizer --input-dir ./src --output-dir ./dist
 ```
 
 ### CLI Options
@@ -165,7 +165,7 @@ Create a `html-rag-optimizer.json` file:
 }
 ```
 
-Use with: `html-rag-optimizer --config html-rag-optimizer.json input.html -o output.html`
+Use with: `@harutakax/html-rag-optimizer --config html-rag-optimizer.json input.html -o output.html`
 
 ## What Gets Optimized
 

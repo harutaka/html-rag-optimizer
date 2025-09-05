@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 // Import the CLI module from the built distribution
-const { runCli } = require('../dist/cli.js')
+import { runCli } from '../dist/cli.js'
 
 // Run the CLI with process arguments
 runCli(process.argv).catch((error) => {
