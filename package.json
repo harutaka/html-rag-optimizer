@@ -1,6 +1,6 @@
 {
   "name": "@harutakax/html-rag-optimizer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "HTML optimization tool for RAG (Retrieval-Augmented Generation) systems",
   "author": "harutaka",
   "repository": {
