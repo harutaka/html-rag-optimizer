@@ -1,6 +1,6 @@
 {
   "name": "html-rag-optimizer",
-  "version": "1.0.0",
+  "version": "0.1.0-alpha.1",
   "description": "HTML optimization tool for RAG (Retrieval-Augmented Generation) systems",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
