@@ -1,7 +1,12 @@
 {
-  "name": "html-rag-optimizer",
+  "name": "@harutakax/html-rag-optimizer",
   "version": "0.1.0-alpha.1",
   "description": "HTML optimization tool for RAG (Retrieval-Augmented Generation) systems",
+  "author": "harutaka",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/harutaka/html-rag-optimizer.git"
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -29,7 +34,9 @@
     "type-check": "tsc --noEmit",
     "lint": "biome check .",
     "lint:fix": "biome check --apply .",
-    "ci": "pnpm lint && pnpm type-check && pnpm test && pnpm build"
+    "format": "biome format --write .",
+    "ci": "pnpm lint && pnpm type-check && pnpm test && pnpm build",
+    "prepublish": "pnpm run build"
   },
   "keywords": [
     "html",
@@ -39,8 +46,7 @@
     "text-extraction",
     "typescript"
   ],
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "packageManager": "pnpm@10.15.1",
   "engines": {
     "node": ">=18.0.0"
