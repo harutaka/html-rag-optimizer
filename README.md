@@ -16,10 +16,6 @@ A powerful HTML optimization tool designed specifically for RAG (Retrieval-Augme
 
 ```bash
 npm install html-rag-optimizer
-# or
-yarn add html-rag-optimizer
-# or
-pnpm add html-rag-optimizer
 ```
 
 ## Quick Start
@@ -284,19 +280,3 @@ pnpm build
 # Run examples
 pnpm tsx examples/basic-usage.ts
 ```
-
-## Contributing
-
-We welcome contributions! Please read our [Contributing Guide](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
-
-## License
-
-This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
-
-## Changelog
-
-See [CHANGELOG.md](CHANGELOG.md) for a list of changes and version history.
-
----
-
-**Made with ❤️ for RAG systems and information retrieval applications.**
