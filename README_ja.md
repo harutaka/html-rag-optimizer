@@ -45,12 +45,17 @@ console.log(optimized);
 ```bash
 # 単一ファイルの最適化
 npx @harutakax/html-rag-optimizer input.html -o output.html
+```
 
-# ディレクトリ全体の最適化
-@harutakax/html-rag-optimizer --input-dir ./docs --output-dir ./optimized
+```bash
+npm install -g @harutakax/html-rag-optimizer
 
-# カスタムオプション付き
-@harutakax/html-rag-optimizer input.html -o output.html --keep-attributes --exclude-tags script,style
+# グローバルインストールした場合はhtml-rag-optimizerだけで実行できる
+## ディレクトリ全体の最適化
+html-rag-optimizer --input-dir ./docs --output-dir ./optimized
+
+## カスタムオプション付き
+html-rag-optimizer input.html -o output.html --keep-attributes --exclude-tags script,style
 ```
 
 ## 設定オプション
@@ -117,19 +122,20 @@ async function processBatch(files: string[]) {
 ## CLIリファレンス
 
 ### 基本コマンド
+グローバルインストールした前提とする。
 
 ```bash
 # ヘルプ
-@harutakax/html-rag-optimizer --help
+html-rag-optimizer --help
 
 # バージョン
-@harutakax/html-rag-optimizer --version
+html-rag-optimizer --version
 
 # 単一ファイル
-@harutakax/html-rag-optimizer input.html -o output.html
+html-rag-optimizer input.html -o output.html
 
 # ディレクトリ処理
-@harutakax/html-rag-optimizer --input-dir ./src --output-dir ./dist
+html-rag-optimizer --input-dir ./src --output-dir ./dist
 ```
 
 ### CLIオプション
@@ -160,7 +166,7 @@ async function processBatch(files: string[]) {
 }
 ```
 
-使用方法: `@harutakax/html-rag-optimizer --config html-rag-optimizer.json input.html -o output.html`
+使用方法: `html-rag-optimizer --config html-rag-optimizer.json input.html -o output.html`
 
 ## 最適化される内容
 
