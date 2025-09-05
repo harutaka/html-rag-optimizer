@@ -69,7 +69,7 @@ const excludeScriptResult = optimizeHtml(sampleHtml, {
   excludeTags: ["script"],
 });
 console.log("Result:", excludeScriptResult);
-console.log("Contains script tag:", excludeScriptResult.includes("<script>"));
+console.log("Contains script tag:", excludeScriptResult.includes("<script"));
 console.log();
 
 // Example 4: Exclude multiple tags
@@ -78,7 +78,7 @@ const excludeMultipleResult = optimizeHtml(sampleHtml, {
   excludeTags: ["script", "pre", "code"],
 });
 console.log("Result:", excludeMultipleResult);
-console.log("Contains script:", excludeMultipleResult.includes("<script>"));
+console.log("Contains script:", excludeMultipleResult.includes("<script"));
 console.log("Contains pre:", excludeMultipleResult.includes("<pre>"));
 console.log();
 
@@ -104,7 +104,7 @@ const complexResult = optimizeHtml(sampleHtml, {
   minifyText: true,
 });
 console.log("Result:", complexResult);
-console.log("Contains script:", complexResult.includes("<script>"));
+console.log("Contains script:", complexResult.includes("<script"));
 console.log("Contains pre:", complexResult.includes("<pre>"));
 console.log("Contains attributes:", complexResult.includes('class="'));
 console.log();

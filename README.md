@@ -37,7 +37,7 @@ const html = `
 // Basic optimization
 const optimized = optimizeHtml(html);
 console.log(optimized);
-// Output: <div><h1>Welcome</h1><p>This is a <strong>sample</strong> paragraph.</p></div>
+// Output: <div><h1>Welcome</h1><p>This is a<strong>sample</strong>paragraph.</p></div>
 ```
 
 ### CLI Usage
@@ -270,5 +270,5 @@ pnpm test
 pnpm build
 
 # Run examples
-pnpm tsx examples/basic-usage.ts
+pnpm dlx tsx examples/basic-usage.ts
 ```

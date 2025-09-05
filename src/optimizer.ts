@@ -29,6 +29,9 @@ function optimizeWithRegex(
 ): string {
   let result = html;
 
+  // Remove DOCTYPE declaration
+  result = result.replace(/<!DOCTYPE[^>]*>/gi, "");
+
   // Remove script tags (unless excluded)
   if (!opts.excludeTags.includes("script")) {
     result = result.replace(
