@@ -15,7 +15,7 @@ RAG（Retrieval-Augmented Generation）システム向けに特別に設計さ�
 ## インストール
 
 ```bash
-npm install html-rag-optimizer
+npm install @harutakax/html-rag-optimizer
 ```
 
 ## クイックスタート
@@ -23,7 +23,7 @@ npm install html-rag-optimizer
 ### プログラマティックAPI
 
 ```typescript
-import { optimizeHtml } from 'html-rag-optimizer';
+import { optimizeHtml } from '@harutakax/html-rag-optimizer';
 
 const html = `
 <div class="container">
@@ -44,7 +44,7 @@ console.log(optimized);
 
 ```bash
 # 単一ファイルの最適化
-npx html-rag-optimizer input.html -o output.html
+npx @harutakax/html-rag-optimizer input.html -o output.html
 
 # ディレクトリ全体の最適化
 html-rag-optimizer --input-dir ./docs --output-dir ./optimized
@@ -70,7 +70,7 @@ html-rag-optimizer input.html -o output.html --keep-attributes --exclude-tags sc
 ### カスタム設定
 
 ```typescript
-import { optimizeHtml } from 'html-rag-optimizer';
+import { optimizeHtml } from '@harutakax/html-rag-optimizer';
 
 const options = {
   keepAttributes: false,
@@ -88,7 +88,7 @@ const optimized = optimizeHtml(html, options);
 ### ファイル処理
 
 ```typescript
-import { optimizeHtmlFile, optimizeHtmlDir } from 'html-rag-optimizer';
+import { optimizeHtmlFile, optimizeHtmlDir } from '@harutakax/html-rag-optimizer';
 
 // 単一ファイルの処理
 await optimizeHtmlFile('input.html', 'output.html', options);
@@ -100,7 +100,7 @@ await optimizeHtmlDir('./docs', './optimized', options);
 ### カスタムロジックでのバッチ処理
 
 ```typescript
-import { optimizeHtml } from 'html-rag-optimizer';
+import { optimizeHtml } from '@harutakax/html-rag-optimizer';
 import { promises as fs } from 'fs';
 
 async function processBatch(files: string[]) {
