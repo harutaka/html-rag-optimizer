@@ -270,5 +270,5 @@ pnpm test
 pnpm build
 
 # サンプル実行
-pnpm tsx examples/basic-usage.ts
+pnpm dlx tsx examples/basic-usage.ts
 ```
