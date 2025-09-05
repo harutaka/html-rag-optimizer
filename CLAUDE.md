@@ -27,22 +27,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## High-Level Architecture
 
 ### Core Architecture
-This is an HTML optimization tool specifically designed for RAG (Retrieval-Augmented Generation) systems. The architecture uses a dual optimization approach:
-
-1. **Regex-based optimization** (`optimizeWithRegex`) - Fast path for simple cases without `keepTags`
-2. **Parser-based optimization** (`optimizeWithParser`) - Complex path using node-html-parser for advanced tag filtering
+This is an HTML optimization tool specifically designed for RAG (Retrieval-Augmented Generation) systems. The architecture uses a streamlined regex-based optimization approach for optimal performance.
 
 ### Key Components
 
 #### `/src/optimizer.ts` - Core Engine
-The main optimization logic with two distinct pathways:
-- Simple regex approach for performance when no complex tag filtering is needed
-- HTML parser approach when `keepTags` option requires selective element preservation
+The main optimization logic using a single regex-based approach:
+- High-performance regex optimization for all HTML processing
 - Handles iterative empty element removal to catch nested empty tags
+- Supports excludeTags for selective tag preservation
 
 #### `/src/types.ts` - Configuration Interface
 Defines `OptimizeOptions` interface with these key options:
-- `keepTags[]` - Whitelist specific tags (others removed)
 - `excludeTags[]` - Blacklist specific tags (others preserved)
 - `keepAttributes` - Preserve HTML attributes
 - `removeEmpty` - Remove empty elements
@@ -73,11 +69,10 @@ Follows TDD methodology with comprehensive test coverage:
 - Dual package exports supporting both import/require patterns
 
 ### Critical Implementation Notes
-- The optimizer handles a complex interaction between `keepTags` and `excludeTags` options
-- Script/style/meta tags have special handling - they're removed by default but can be preserved via `keepTags`
 - Empty element removal is iterative to handle nested scenarios
-- Performance is optimized with regex pre-filtering before parser usage
+- Performance is optimized with streamlined regex-only approach (no HTML parser needed)
 - CLI uses actual command execution tests rather than mocked tests
+- ExcludeTags option preserves both tags and their attributes
 
 ### Development Workflow
 This project was built using strict TDD methodology. When making changes:

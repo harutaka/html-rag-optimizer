@@ -61,7 +61,6 @@ npx @harutakax/html-rag-optimizer input.html -o output.html
 | `removeEmpty` | `boolean` | `true` | 空要素を削除 |
 | `preserveWhitespace` | `boolean` | `false` | 空白文字の書式を保持 |
 | `excludeTags` | `string[]` | `[]` | 削除から除外するタグ |
-| `keepTags` | `string[]` | `[]` | 指定したタグのみを保持（その他を削除） |
 | `removeComments` | `boolean` | `true` | HTMLコメントを削除 |
 | `minifyText` | `boolean` | `true` | テキストコンテンツを正規化・圧縮 |
 
@@ -77,7 +76,6 @@ const options = {
   removeEmpty: true,
   preserveWhitespace: false,
   excludeTags: ['code', 'pre'], // コードブロックは削除しない
-  keepTags: ['h1', 'h2', 'h3', 'p', 'div', 'article'], // これらのタグのみを保持
   removeComments: true,
   minifyText: true
 };
@@ -108,7 +106,6 @@ async function processBatch(files: string[]) {
     files.map(async (file) => {
       const html = await fs.readFile(file, 'utf-8');
       return optimizeHtml(html, {
-        keepTags: ['h1', 'h2', 'h3', 'p', 'article'],
         removeComments: true
       });
     })
@@ -143,7 +140,6 @@ async function processBatch(files: string[]) {
 --output-dir <path>          出力ディレクトリ
 --keep-attributes            HTML属性を保持
 --exclude-tags <tags>        除外するタグ（カンマ区切り）
---keep-tags <tags>           指定したタグのみを保持（カンマ区切り）
 --preserve-whitespace        空白文字を保持
 --config <path>              設定ファイルパス
 -h, --help                   ヘルプを表示
@@ -159,7 +155,6 @@ async function processBatch(files: string[]) {
   "keepAttributes": false,
   "removeEmpty": true,
   "excludeTags": ["code", "pre"],
-  "keepTags": ["h1", "h2", "h3", "p", "div", "article"],
   "removeComments": true,
   "minifyText": true
 }
@@ -226,7 +221,6 @@ async function processBatch(files: string[]) {
 // インデックス化前にコンテンツを最適化
 const webContent = await fetchWebPage(url);
 const optimizedForRAG = optimizeHtml(webContent, {
-  keepTags: ['h1', 'h2', 'h3', 'p', 'article', 'section'],
   removeComments: true,
   minifyText: true
 });
@@ -240,7 +234,6 @@ LLMに供給する前にドキュメントをクリーンアップ：
 const docs = await fs.readFile('documentation.html', 'utf-8');
 const cleanDocs = optimizeHtml(docs, {
   excludeTags: ['code', 'pre'], // コード例を保持
-  keepTags: ['h1', 'h2', 'h3', 'p', 'ul', 'ol', 'li', 'code', 'pre']
 });
 ```
 
@@ -250,7 +243,6 @@ const cleanDocs = optimizeHtml(docs, {
 ```typescript
 const scrapedHTML = await scrapeWebsite(url);
 const cleanContent = optimizeHtml(scrapedHTML, {
-  keepTags: ['p', 'h1', 'h2', 'h3', 'article'],
   removeComments: true,
   minifyText: true
 });

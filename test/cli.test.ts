@@ -81,23 +81,6 @@ describe("CLI Interface", () => {
     expect(result).toBe("<div>Dir Test</div>");
   });
 
-  it("should handle --keep-tags option", async () => {
-    const tempInput = join(testDir, "keep-tags-input.html");
-    const tempOutput = join(testDir, "keep-tags-output.html");
-
-    await fs.writeFile(
-      tempInput,
-      "<div>Content</div><p>Keep</p><span>Remove</span>",
-    );
-
-    await execAsync(
-      `node bin/cli.js ${tempInput} -o ${tempOutput} --keep-tags div,p`,
-    );
-
-    const result = await fs.readFile(tempOutput, "utf-8");
-    expect(result).toBe("<div>Content</div><p>Keep</p>");
-  });
-
   it("should handle --preserve-whitespace option", async () => {
     const tempInput = join(testDir, "whitespace-input.html");
     const tempOutput = join(testDir, "whitespace-output.html");

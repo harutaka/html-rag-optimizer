@@ -3,7 +3,6 @@ export interface OptimizeOptions {
   removeEmpty?: boolean;
   preserveWhitespace?: boolean;
   excludeTags?: string[];
-  keepTags?: string[];
   removeComments?: boolean;
   minifyText?: boolean;
 }
